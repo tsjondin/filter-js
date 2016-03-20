@@ -18,7 +18,7 @@ class FilterParserVisitor {
 
 		let operation = [
 			expressions.pop(),
-			token.value
+			token
 		];
 
 		expressions.push(operation);
@@ -39,45 +39,34 @@ class FilterParserVisitor {
 	}
 
 	string (token, stream, expressions) {
-		expressions.push(token.value);
+		expressions.push(token);
 		this.parser.continue(stream, expressions);
 	}
 
 	number (token, stream, expressions) {
-		expressions.push(parseFloat(token.value));
+		token.value = parseFloat(token.value);
+		expressions.push(token);
 		this.parser.continue(stream, expressions);
 	}
 
 	integer (token, stream, expressions) {
-		expressions.push(parseInt(token.value));
+		token.value = parseInt(token.value, 10);
+		expressions.push(token);
 		this.parser.continue(stream, expressions);
 	}
 
 	keyword (token, stream, expressions) {
-		if (Array.isArray(expressions[expressions.length - 1])) {
-
-			//let rest = [token.value];
-			//this.parser.continue(stream, rest);
-			//expressions[expressions.length - 1].push(rest.shift());
-
-			expressions.push(token.value);
-			this.parser.continue(stream, expressions, token);
-
-			//rest.forEach(node => expressions.push(node));
-
-		} else {
-			expressions.push(token.value);
-			this.parser.continue(stream, expressions, token);
-		}
+		expressions.push(token);
+		this.parser.continue(stream, expressions, token);
 	}
 
 	scope (token, stream, expressions) {
-		expressions.push(token.value);
+		expressions.push(token);
 		this.parser.continue(stream, expressions, token);
 	}
 
 	list (token, stream, expressions) {
-		expressions.push(token.value);
+		expressions.push(token);
 		this.parser.continue(stream, expressions, token);
 	}
 

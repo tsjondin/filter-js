@@ -8,10 +8,15 @@ class FilterParserToken {
 
   constructor (type, value) {
 
+		this.token = true;
     this.type = type;
     this.value = value;
 
   }
+
+	toString () {
+		return `FilterParserToken<${this.type}>[${this.value}]`;
+	}
 
 }
 
@@ -105,7 +110,7 @@ class FilterParserTokenizer {
 		if (character.match(/\d|\./)) {
 			let number = character + stream.until(/\s/);
 			if (number.match(/\d*\.\d*/)) {
-return new FilterParserToken('number', number);
+				return new FilterParserToken('number', number);
 			} else {
 				return new FilterParserToken('integer', number);
 			}
@@ -162,3 +167,4 @@ return new FilterParserToken('number', number);
 
 
 module.exports = FilterParserTokenizer;
+module.exports.FilterParserToken = FilterParserToken;
