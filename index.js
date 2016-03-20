@@ -3,11 +3,11 @@
 const FilterParser = require('./filterparser');
 const FilterParserVisitor = require('./filterparservisitor');
 const FilterParserTokenizer = require('./filterparsertokenizer');
-const FilterAggregator = require('./filteraggregator');
+const FilterInterpreter = require('./filterinterpreter');
 
 module.exports = {
 	FilterParser,
 	FilterParserVisitor,
 	FilterParserTokenizer,
-	FilterAggregator
+	FilterInterpreter
 }

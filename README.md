@@ -27,7 +27,7 @@ To correctly parse without lookahead, there are three solutions:
 
  - [ ] The first goal is to find out it is possible to make the parses associative while still
 retaining its implemented one-pass lexing and visiting
- - [ ] Rewrite the example "Aggregator" into a "language standard" interface instead.
+ - [X] ~~Rewrite the example "Aggregator" into a "language standard" interface instead.~~ This is now the FilterInterpreter, which consists of a bunch of visitors.
  - [ ] The third goal is, I don't know, possibly make something like functions or macros work
 so that one can do things like "time < (time(now) - 3600)"
  - [ ] Oh, and handle basic arithmetics could be nice, just looking at above!
@@ -64,7 +64,7 @@ decide if we want global left or right associativity (or operator specific, thou
 for a simple filter language).
 
 *Note*: I will explain this as if we are filtering a set of objects, this is seen implemented in the
-FilterAggregator
+FilterInterpreter
 
 If we want a right-associative language then we:
 * Reduce the set items by calling a matcher with the object and a copy of the expression

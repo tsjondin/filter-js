@@ -1,9 +1,8 @@
 "use strict";
 
-const Operators = [
-	'=', '!', '!=', '<',
-	'<=', '>', '>=', ','
-];
+const Operators = Object.keys(
+	require('./filteroperators.json')
+);
 
 class FilterParserToken {
 

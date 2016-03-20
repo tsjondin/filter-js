@@ -1,0 +1,12 @@
+{
+	"=": "equals",
+	"!": "not",
+	"!=": "not_equals",
+	"<": "less_than",
+	"<=": "less_than_equals",
+	">": "greater_than",
+	">=": "greater_than_equals",
+	",": "separator",
+	"and": "and",
+	"or": "or"
+}
